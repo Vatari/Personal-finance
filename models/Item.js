@@ -12,7 +12,7 @@ const ItemSchema = new Schema(
     merchant: {
       type: String,
       required: true,
-      minLength: [4, "Title must be at least 4 characters"],
+      minLength: [4, "Merchant must be at least 4 characters"],
     },
     total: {
       type: Number,

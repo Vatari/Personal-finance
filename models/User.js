@@ -13,13 +13,14 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: [true, "Username is required"],
+    minLength: [4, "Username must be at least 4 characters"],
   },
   password: {
     type: String,
     required: true,
-    minLength: [5, "Password must be at least 5 characters"],
+    minLength: [8, "Password must be at least 8 characters"],
   },
-  amount: { type: Number, required: true, default: 0 },
+  amount: { type: Number, default: 0 },
   expenses: { type: [Number], ref: "Item", default: [] },
 });
 

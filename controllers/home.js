@@ -1,16 +1,16 @@
-const { isUser } = require("../middleware/guards");
-const { getItems, getUserAndItems, searchItem } = require("../services/item");
+const { isUser, isOwner } = require("../middleware/guards");
+const { getItems, getUserAndItems } = require("../services/item");
 const preload = require("../middleware/preload");
 
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
-  const query = req.query.text;
-  let items = await getItems();
-
-  if (query) {
-    items = await searchItem(query);
+  let userId;
+  if (req.session.user) {
+    userId = req.session.user._id;
   }
+  let items = await getItems(userId);
+
   res.render("home", { title: "Home Page", items });
 });
 
@@ -19,14 +19,17 @@ router.get("/details", async (req, res) => {
   res.render("details", { title: "Details Page", items });
 });
 
-router.get("/details/:id", preload(true), async (req, res) => {
+router.get("/details/:id", preload(true), isUser(), async (req, res) => {
   if (req.session.user) {
     res.locals.item.hasUser = true;
     res.locals.item.isOwner =
       req.session.user?._id == res.locals.item.owner._id;
   }
-
-  res.render("details", { title: "Details" });
+  if (res.locals.item.isOwner) {
+    res.render("details", { title: "Details" });
+  } else {
+    res.render("404");
+  }
 });
 
 router.get("/profile", preload(true), isUser(), async (req, res) => {

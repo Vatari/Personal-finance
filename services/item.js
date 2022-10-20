@@ -15,8 +15,8 @@ async function calcExpenses(item, userId) {
   await user.save();
 }
 
-async function getItems() {
-  return Item.find({}).sort({ createdAt: -1 }).limit(3).lean();
+async function getItems(userId) {
+  return Item.find({ owner: userId }).sort({ createdAt: -1 }).lean();
 }
 
 async function getItemsByAuthor(userId) {
@@ -57,10 +57,6 @@ async function getUserAndItems(userId) {
   return User.findById(userId).lean();
 }
 
-async function searchItem(text) {
-  return Item.find({ title: { $regex: text, $options: "i" } }).lean();
-}
-
 module.exports = {
   createItem,
   getItems,
@@ -70,7 +66,6 @@ module.exports = {
   refill,
   getItemsByAuthor,
   getUserAndItems,
-  searchItem,
   getItemAndUsers,
   calcExpenses,
 };

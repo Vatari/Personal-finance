@@ -19,8 +19,8 @@ router.post("/register", isGuest(), async (req, res) => {
     if (!NAME_PATTERN.test(req.body.username)) {
       throw new Error("Username must be only in english letters and digits!");
     }
-    if (!NAME_PATTERN.test(req.body.password)) {
-      throw new Error("Password must be only in english letters and digits!");
+    if (req.body.amount < 0) {
+      throw new Error("Amount must be positive");
     }
 
     const user = await register(

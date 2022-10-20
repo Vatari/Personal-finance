@@ -28,9 +28,12 @@ router.post("/create", isUser(), async (req, res) => {
     owner: userId,
   };
   try {
+    if (req.body.total < 0) {
+      throw new Error("Total must be positive");
+    }
     const result = await createItem(item);
     await calcExpenses(result, userId);
-    
+
     res.redirect("/");
   } catch (err) {
     const errors = mapErrors(err);
