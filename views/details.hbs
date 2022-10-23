@@ -1,0 +1,27 @@
+<section class="expense-report">
+  {{#with item}}
+    <h1>ID: {{_id}}</h1>
+    <div class="report-date">
+      <img src="/static/images/date.png" alt="" />
+      <p>{{moment createdAt format="DD MMM YYYY HH:mm:ss"}}</p>
+    </div>
+
+    <div class="report-category">
+      <img src="/static/images/amount.png" alt="" />
+      <p>{{category}} - {{total}} BGN</p>
+    </div>
+
+    <div class="report-merchant">
+      <p>{{merchant}}</p>
+    </div>
+
+    <div class="report-description">
+      <img src="/static/images/hastag.png" alt="" />
+      <p>{{description}}</p>
+    </div>
+
+    <div class="report-action">
+      <a disabled href="/delete/{{_id}}">Stop tracking</a>
+    </div>
+  {{/with}}
+</section>
