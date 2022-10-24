@@ -4,9 +4,6 @@ const {
   Types: { ObjectId },
 } = require("mongoose");
 
-const URL_PATTERN =
-  /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
-
 const ItemSchema = new Schema(
   {
     merchant: {
