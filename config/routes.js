@@ -10,5 +10,4 @@ module.exports = (app) => {
   app.get("*", (req, res) => {
     res.render("404", { title: "404 Page Not Found!" });
   });
-
 };
