@@ -1,4 +1,4 @@
-const { isUser, isOwner } = require("../middleware/guards");
+const { isUser } = require("../middleware/guards");
 const { getItems, getUserAndItems } = require("../services/item");
 const preload = require("../middleware/preload");
 
