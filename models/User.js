@@ -6,8 +6,6 @@ const {
 const bcrypt = require("bcrypt");
 
 const SALT_ROUNDS = 10;
-const NAME_PATTERN = /^[A-Za-z][A-Za-z0-9]*$/;
-const EMAIL_PATTERN = /^\S+@\S+\.\S+$/;
 
 const userSchema = new Schema({
   username: {
