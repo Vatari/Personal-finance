@@ -1,5 +1,5 @@
 const { mapErrors } = require("../util/mappers");
-const { isUser, isOwner, isGuest } = require("../middleware/guards");
+const { isUser, isOwner } = require("../middleware/guards");
 const preload = require("../middleware/preload");
 
 const {
