@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 require("../models/User");
 
-const dbName = "money-gone";
+const dbName = "personal-finance";
 const connectionString = `mongodb://localhost:27017/${dbName}`;
 
 module.exports = async (app) => {
