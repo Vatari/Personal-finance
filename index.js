@@ -11,7 +11,7 @@ async function start() {
   await databaseConfig(app);
   routesConfig(app);
 
-  app.listen(3000, () =>
-    console.log("Server succsessfully started at port 3000")
+  app.listen(3030, () =>
+    console.log("Server succsessfully started at port 3030")
   );
 }
